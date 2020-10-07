@@ -1,18 +1,21 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
+import LoginScreen from '../../components/LoginScreen';
 import { Text, View } from '../../components/Themed';
 
-export default function HomeScreen() {
+const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <Text>Home</Text>
+      <Button title="Log out" onPress={() => navigation.navigate('Login')} />
       <EditScreenInfo path="/screens/HomeScreen.tsx" />
     </View>
   );
-}
+};
+
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {

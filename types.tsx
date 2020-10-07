@@ -15,3 +15,11 @@ export type HomeParamList = {
 export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
+
+export type LoginParamList = {
+  LoginScreen: undefined;
+};
+
+export type CreateAccountParamList = {
+  CreateAccountScreen: undefined;
+};
