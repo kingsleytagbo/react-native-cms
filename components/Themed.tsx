@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { Text as DefaultText, View as DefaultView, Button as DefaultButton } from 'react-native';
+import { 
+  Text as DefaultText, 
+  View as DefaultView, 
+  Button as DefaultButton, ButtonProps as DefaultButtonProps,
+  ScrollView } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -31,19 +35,26 @@ export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
-  return <DefaultText accessibilityState={{select:'disabled'}} style={[{ color }, style]} {...otherProps} />;
+  return <DefaultText accessibilitystate={{select:'disabled'}} style={[{ color }, style]} {...otherProps} />;
 }
 
 export function View(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
-  return <DefaultView accessibilityState={{select:'disabled'}} style={[{ backgroundColor }, style]} {...otherProps} />;
+  return <DefaultView accessibilitystate={{select:'disabled'}} style={[{ backgroundColor }, style]} {...otherProps} />;
 }
 
-export function Button(props: ViewProps) {
+
+export function Button(props: DefaultButtonProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
-  return <DefaultButton accessibilityState={{select:'disabled'}} style={[{ backgroundColor }, style]} {...otherProps} />;
+  return <DefaultButton style={[{ backgroundColor }, style]} {...otherProps} />;
+}
+
+export class Button1 extends React.Component<DefaultButtonProps & { title?: string }> {
+  render() {
+    return <DefaultButton {...this.props} />;
+  }
 }
