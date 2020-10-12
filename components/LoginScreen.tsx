@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import { View, Text, Button } from '../components/Themed';
 import { StyleSheet } from 'react-native';
 import { login } from '../services/Api';
-  
 
-const LoginScreen = ({ navigation }) => {
+type Props = {
+  navigation: any;
+};
+
+const LoginScreen = ({ navigation }: Props) => {
   const [errorMessage, setErrorMessage] = useState('');
   const loginUser = () => {
     setErrorMessage('');
     login('test@test.ca', 'password', false)
       .then((val) => {
-        console.log({"LogiNScreen" : val});
+        console.log({"Login Success ..." : val});
         navigation.navigate('Home');
       })
       .catch((err) => setErrorMessage(err.message));

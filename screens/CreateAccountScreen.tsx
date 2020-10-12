@@ -1,12 +1,15 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { Button, Text, View } from '../components/Themed';
 import { createAccount } from '../services/Api';
+type Props = {
+    navigation: any;
+  };
 
-const CreateAccount = ({ navigation }) => {
+const CreateAccount = ({ navigation }: Props) => {
   const createUser = () => {
     createAccount('test@test.ca', 'password')
       .then((val) => {
-          console.log({"CreateAccount" : val});
+          console.log({"CreateAccount Success" : val});
         navigation.navigate('Home');
       })
       .catch((err) => console.log('error:', err.message));

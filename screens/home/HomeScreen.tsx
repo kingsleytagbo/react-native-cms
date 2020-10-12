@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import LoginScreen from '../../components/LoginScreen';
-import { Text, View } from '../../components/Themed';
+import { Button, Text, View } from '../../components/Themed';
 
 const HomeScreen = ({ navigation }) => {
   return (
