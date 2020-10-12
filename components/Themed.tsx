@@ -46,11 +46,12 @@ export function View(props: ViewProps) {
 }
 
 
-export function Button(props: DefaultButtonProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
+export function Button(props: any) {
+  const { style, color, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
-
-  return <DefaultButton style={[{ backgroundColor }, style]} {...otherProps} />;
+  return (
+    <DefaultButton color={color} style={[{ backgroundColor }, style]} {...otherProps} />
+  );
 }
 
 export class Button1 extends React.Component<DefaultButtonProps & { title?: string }> {

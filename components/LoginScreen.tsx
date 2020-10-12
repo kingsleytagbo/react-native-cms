@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button } from '../components/Themed';
 import { StyleSheet } from 'react-native';
 import { login } from '../services/Api';
-import SignUpForm from '../components/forms/SignupForm';
+import LoginForm from '../components/forms/LoginForm';
 
 type Props = {
   navigation: any;
@@ -26,7 +26,7 @@ const LoginScreen = ({ navigation }: Props) => {
       <Text>LoginScreen</Text>
       <Button title="Log in" onPress={loginUser} />
     */}
-      <SignUpForm
+      <LoginForm
         buttonText="Log in"
         onSubmit={login}
         onAuthentication={() => navigation.navigate('Home')}
@@ -36,7 +36,7 @@ const LoginScreen = ({ navigation }: Props) => {
           onPress={() => navigation.navigate('CreateAccount')}
         />
         {errorMessage ? <Text style={{ color: 'red' }}>{errorMessage}</Text> : null}
-      </SignUpForm>
+      </LoginForm>
     </View>
   );
   };
