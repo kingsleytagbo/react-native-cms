@@ -6,6 +6,7 @@ const CreateAccount = ({ navigation }) => {
   const createUser = () => {
     createAccount('test@test.ca', 'password')
       .then((val) => {
+          console.log({"CreateAccount" : val});
         navigation.navigate('Home');
       })
       .catch((err) => console.log('error:', err.message));

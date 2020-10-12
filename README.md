@@ -1,6 +1,9 @@
 # React Native Blog
 Build Native (IOS + Android) Mobile Apps in React Native
 
+## References
+1. https://scottdomes.com/react-native-authentication/
+
 ## Setup
 echo init ReactNativeBlog
 npm start 
