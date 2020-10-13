@@ -10,14 +10,19 @@ const mockSuccess = (value:any) => {
     });
   };
 
-  export const login = (email:string, password:string, shouldSucceed = true) => {
-    console.log(email, password);
-
-    if (!shouldSucceed) {
-      return mockFailure({ error: 500, message: 'Login failed!' });
+  export const login = (email:string, password:string, useApi:boolean = true) => {
+    console.log({'Login': {email: email, password:password, useApi: useApi}});
+    if (useApi) {
+      if ((email && email === '') && (password && password === '')) {
+        return mockSuccess({ auth_token: 'Login Api - Success' });
+      }
+      else {
+        return mockFailure({ error: 500, message: 'Login Api - Failure' });
+      }
     }
-  
-    return mockSuccess({ auth_token: 'successful_fake_token' });
+    else{
+      return mockFailure({ error: 500, message: 'Login - Failure' });
+    }
   };
 
   export const createAccount = (email:string, password:string, shouldSucceed = true) => {

@@ -19,7 +19,7 @@ const CreateAccount = ({ navigation }: Props) => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>CreateAccount</Text>
-      <Button title="Create user" style="backgroundColor:red;" onPress={createUser} />
+      <Button title="Create user" onPress={createUser} />
       <Button title="Log in" onPress={() => navigation.navigate('Login')} />
     </View>
   );

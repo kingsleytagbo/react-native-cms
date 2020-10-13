@@ -27,11 +27,12 @@ const LoginScreen = ({ navigation }: Props) => {
       <Button title="Log in" onPress={loginUser} />
     */}
       <LoginForm
-        buttonText="Log in"
+        buttonText="Log-In"
         onSubmit={login}
         onAuthentication={() => navigation.navigate('Home')}
       >
         <Button
+          style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
           title="Create account"
           onPress={() => navigation.navigate('CreateAccount')}
         />
