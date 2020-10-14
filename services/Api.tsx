@@ -72,7 +72,7 @@ export const post = async (destination:string, body:any) => {
   const headers = {};
   const result = await fetch(`${API_URL}${destination}`, {
     method: 'POST',
-    headers,
+    headers: new Headers({'content-type': 'application/json'}),
     body: JSON.stringify(body),
   });
 
