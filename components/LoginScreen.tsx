@@ -29,7 +29,10 @@ const LoginScreen = ({ navigation }: Props) => {
       <LoginForm
         buttonText="Log-In"
         onSubmit={login}
-        onAuthentication={() => navigation.navigate('Home')}
+        onSuccess={() => {
+          setErrorMessage("Your are logging-in ...");
+          navigation.navigate('Home'); 
+        }}
         onFailure = {() => { setErrorMessage("Your username or password is invalid!"); }}
       >
         <Button

@@ -70,11 +70,13 @@ export const getUsers = (shouldSucceed = true) => {
 export const post = async (destination:string, body:any) => {
   const headers = {
     Accept: 'application/json',
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json; charset=utf-8',
   };
   const result = await fetch(`${API_URL}${destination}`, {
     method: 'POST',
-    headers: headers,
+    headers: {
+      "Content-Type": "text/plain"
+  },
     body: JSON.stringify(body),
   });
 
