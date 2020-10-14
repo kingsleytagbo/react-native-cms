@@ -3,17 +3,23 @@ import { ScrollView, StyleSheet, TextInput } from 'react-native';
 import { View, Text, Button } from '../../components/Themed';
 import { setToken } from '../../services/Token';
 
-const SignupForm = ({ buttonText, onSubmit, children, onAuthentication }) => {
+const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }) => {
     const [email, onChangeEmail] = useState('');
     const [password, onChangePassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
   
     const submit = () => {
       onSubmit(email, password)
-        .then(async (res:any) => {
-            console.log({email: email, password: password, res: res});
-          await setToken(res.auth_token);
-          onAuthentication();
+        .then(async (result:any) => {
+            console.log({email: email, password: password, res: result});
+          if (result.authenticated === true) {
+            await setToken(result.auth_token);
+            onSuccess();
+          }
+          else{
+            await setToken(null);
+            onFailure();
+          }
         })
         .catch((res:any) => setErrorMessage(res.error));
     };

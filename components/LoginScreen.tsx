@@ -30,6 +30,7 @@ const LoginScreen = ({ navigation }: Props) => {
         buttonText="Log-In"
         onSubmit={login}
         onAuthentication={() => navigation.navigate('Home')}
+        onFailure = {() => { setErrorMessage("Your username or password is invalid!"); }}
       >
         <Button
           style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}

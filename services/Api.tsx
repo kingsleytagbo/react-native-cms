@@ -13,7 +13,7 @@ const mockSuccess = (value:any) => {
   };
 
   export const login = (email:string, password:string, useApi:boolean = true) => {
-    console.log({'Login': {email: email, password:password, useApi: useApi}});
+    // console.log({'Login': {email: email, password:password, useApi: useApi}});
     if (useApi) {
       if ((email && email !== '') && (password && password !== '')) {
         const body = {
@@ -76,11 +76,10 @@ export const post = async (destination:string, body:any) => {
     body: JSON.stringify(body),
   });
 
-  console.log({result:result, body: result.body});
+  // console.log({result:result, body: result.body});
 
   if (result.ok) {
     const response = result.json();
-    console.log(response);
     return response;
   }
   throw { error: result.status };
