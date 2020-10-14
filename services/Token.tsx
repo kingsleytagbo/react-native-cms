@@ -23,3 +23,4 @@ export const setToken = async (token:any) => {
     return null;
   }
 };
+

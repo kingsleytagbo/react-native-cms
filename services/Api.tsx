@@ -1,3 +1,5 @@
+const API_URL = 'https://nodejsappapi.herokuapp.com';
+
 const mockSuccess = (value:any) => {
     return new Promise((resolve) => {
       setTimeout(() => resolve(value), 2000);
@@ -13,8 +15,15 @@ const mockSuccess = (value:any) => {
   export const login = (email:string, password:string, useApi:boolean = true) => {
     console.log({'Login': {email: email, password:password, useApi: useApi}});
     if (useApi) {
-      if ((email && email === '') && (password && password === '')) {
-        return mockSuccess({ auth_token: 'Login Api - Success' });
+      if ((email && email !== '') && (password && password !== '')) {
+        const body = {
+          "login": {
+            "username": email,
+            "password": password
+          }
+        };
+        return post('/login', body);
+        //return mockSuccess({ auth_token: 'Login Api - Success!' });
       }
       else {
         return mockFailure({ error: 500, message: 'Login Api - Failure' });
@@ -55,4 +64,24 @@ export const getUsers = (shouldSucceed = true) => {
       },
     ],
   });
+};
+
+
+export const post = async (destination:string, body:any) => {
+  // const headers = await getHeaders();
+  const headers = {};
+  const result = await fetch(`${API_URL}${destination}`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(body),
+  });
+
+  console.log({result:result, body: result.body});
+
+  if (result.ok) {
+    const response = result.json();
+    console.log(response);
+    return response;
+  }
+  throw { error: result.status };
 };
