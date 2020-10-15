@@ -11,7 +11,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }) =>
     const submit = () => {
       onSubmit(email, password)
         .then(async (result:any) => {
-          // console.log({result: result, authenticated: result.authenticated, 2 : result.authenticated.authenticated});
+          console.log({result: result, authenticated: result.authenticated, auth_token : result.auth_token});
           if (result.authenticated == true) {
             await setToken(result.auth_token);
             onSuccess();

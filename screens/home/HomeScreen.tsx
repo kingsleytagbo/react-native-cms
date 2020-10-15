@@ -19,8 +19,8 @@ const HomeScreen = ({ navigation }:any ) => {
   };
 
   const getAuthentication = async () => {
-    const token = await getToken() || null;
-    if(token && token != 'null' && token != 'undefined'){
+    const token = await getToken() || 'null';
+    if(token && (token != 'null') && (token != 'undefined') && (token.length > 10)){
       setAuthenticated(true);
     }
     console.log({token: token, authenticated: authenticated});

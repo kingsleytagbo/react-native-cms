@@ -10,15 +10,6 @@ type Props = {
 
 const LoginScreen = ({ navigation }: Props) => {
   const [errorMessage, setErrorMessage] = useState('');
-  const loginUser = () => {
-    setErrorMessage('');
-    login('test@test.ca', 'password', false)
-      .then((val) => {
-        console.log({"Login Success ..." : val});
-        navigation.navigate('Home');
-      })
-      .catch((err) => setErrorMessage(err.message));
-  };
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
