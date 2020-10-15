@@ -1,16 +1,45 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import LoginScreen from '../../components/LoginScreen';
 import { Button, Text, View } from '../../components/Themed';
+import { getToken, setToken } from '../../services/Token';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation }:any ) => {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  const logout = async () => {
+    await setToken(null);
+    navigation.navigate('Login')
+  };
+
+  const login = async () => {
+    navigation.navigate('Login')
+  };
+
+  const getAuthentication = async () => {
+    const token = await getToken() || null;
+    if(token && token != 'null' && token != 'undefined'){
+      setAuthenticated(true);
+    }
+    console.log({token: token, authenticated: authenticated});
+  };
+
+  useEffect(() => {
+    getAuthentication();
+  });
+
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
-      <Button title="Log out" onPress={() => navigation.navigate('Login')} />
-      <EditScreenInfo path="/screens/HomeScreen.tsx" />
+      <Text>Welcome</Text>
+      {authenticated !== null && (
+        <Button
+          onPress={() => authenticated ? logout() : login()}
+          title={authenticated ? 'Logout' : 'Login'}
+        >
+        </Button>
+      )}
     </View>
   );
 };
