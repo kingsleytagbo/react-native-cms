@@ -9,7 +9,8 @@ type Props = {
 };
 
 const LoginScreen = ({ navigation }: Props) => {
-  const [errorMessage, setErrorMessage] = useState('');
+const [errorMessage, setErrorMessage] = useState('');
+const [authenticated, setAuthenticated] = useState(false);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -22,15 +23,20 @@ const LoginScreen = ({ navigation }: Props) => {
         onSubmit={login}
         onSuccess={() => {
           setErrorMessage("Your are logging-in ...");
+          setAuthenticated(true);
           navigation.navigate('Home'); 
         }}
         onFailure = {() => { setErrorMessage("Your username or password is invalid!"); }}
       >
-        <Button
-          style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-          title="Create account"
-          onPress={() => navigation.navigate('CreateAccount')}
-        />
+        {
+          (authenticated !== null) && (authenticated === true) && (
+            <Button
+              style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+              title="Create account"
+              onPress={() => navigation.navigate('CreateAccount')}
+            />
+          )
+        }
         {errorMessage ? <Text style={{ color: 'red' }}>{errorMessage}</Text> : null}
       </LoginForm>
     </View>
