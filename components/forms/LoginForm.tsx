@@ -28,7 +28,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
     return (
       <ScrollView contentContainerStyle={styles.container}>
 
-        <View style={styles.label}><label>Username:</label>
+        <View style={styles.label}><label>UserName:</label>
         <TextInput
             style={styles.textInput}
             onChangeText={(text: any) => onChangeEmail(text)}
@@ -61,7 +61,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
   const TextInputStyle:TextStyle = {
     height: '2em',
     width: 300,
-    fontSize: 15,
+    fontSize: 14,
     borderColor: Colors.light.tint,
     borderWidth: 1,
     marginTop: 2,
@@ -69,7 +69,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
     paddingStart: '0.5em',
     paddingBottom: '0.5em',
     paddingTop: '0.5em',
-    color: Colors.light.tint
+    color: 'Colors.light.tint'
   };
   const styles = StyleSheet.create({
     container: {
@@ -93,7 +93,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
       placeholderTextColor:'gray'
     },
     textInput: TextInputStyle,
-    label: { height: '2em', fontSize: '1em', marginBottom: '2em', color: '#000'}
+    label: { height: '2em', fontSize: '1em', marginBottom: '2em', color: '#191970', fontWeight:'normal'}
 
   });
   
