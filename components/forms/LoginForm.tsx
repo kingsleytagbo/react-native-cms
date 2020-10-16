@@ -29,7 +29,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
     return (
       <ScrollView contentContainerStyle={styles.container}>
 
-        <View style={styles.label}><label><Ionicons name="arrow-back" />UserName:</label>
+        <View style={styles.label}><label><Ionicons name="ios-people" />UserName:</label>
         <TextInput
             style={styles.textInput}
             onChangeText={(text: any) => onChangeEmail(text)}
@@ -39,7 +39,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
           />
         </View>
 
-        <View style={styles.label}><label><Ionicons name="information-circle-outline" />Password:</label>
+        <View style={styles.label}><label><Ionicons name="ios-key" />Password:</label>
           <TextInput
             style={styles.textInput}
             onChangeText={(text: any) => onChangePassword(text)}
