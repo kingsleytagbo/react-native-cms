@@ -29,7 +29,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
     return (
       <ScrollView contentContainerStyle={styles.container}>
 
-        <View style={styles.label}><label><Ionicons name="add" />UserName:</label>
+        <View style={styles.label}><label><Ionicons name="arrow-back" />UserName:</label>
         <TextInput
             style={styles.textInput}
             onChangeText={(text: any) => onChangeEmail(text)}
