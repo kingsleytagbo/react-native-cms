@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
-import LoginScreen from '../../components/LoginScreen';
+import LoginScreen from '../../screens/LoginScreen';
 import { Button, Text, View } from '../../components/Themed';
 import { getToken, setToken } from '../../services/Token';
 
 const HomeScreen = ({ navigation }:any ) => {
   const [authenticated, setAuthenticated] = useState(false);
   const refreshAuthentication = async () => {
-    //const [authenticated, setAuthenticated] = useState(false);
     return () => setAuthenticated(value => !!value); // update the state to force render
 }
 refreshAuthentication();
@@ -38,7 +37,7 @@ refreshAuthentication();
   return (
     <View style={styles.container}>
       <Text>{authenticated ? 'Welcome, you are logged in' : 'You are not logged in'}</Text>
-      {authenticated !== null && (
+      { (authenticated !== null) && (
         <Button
           onPress={() => authenticated ? logout() : login()}
           title={authenticated ? 'Logout' : 'Login'}

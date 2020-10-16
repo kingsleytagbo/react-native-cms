@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, TextInput, TextStyle } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { View, Text, Button } from '../../components/Themed';
 import Colors from '../../constants/Colors';
 import { setToken } from '../../services/Token';
@@ -28,7 +29,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
     return (
       <ScrollView contentContainerStyle={styles.container}>
 
-        <View style={styles.label}><label>UserName:</label>
+        <View style={styles.label}><label><Ionicons name="add" />UserName:</label>
         <TextInput
             style={styles.textInput}
             onChangeText={(text: any) => onChangeEmail(text)}
@@ -38,7 +39,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
           />
         </View>
 
-        <View style={styles.label}><label>Password:</label>
+        <View style={styles.label}><label><Ionicons name="information-circle-outline" />Password:</label>
           <TextInput
             style={styles.textInput}
             onChangeText={(text: any) => onChangePassword(text)}

@@ -11,6 +11,11 @@ export default {
               HomeScreen: 'home',
             },
           },
+          Login: {
+            screens: {
+             Login: 'login',
+            },
+          },
           TabTwo: {
             screens: {
               TabTwoScreen: 'two',

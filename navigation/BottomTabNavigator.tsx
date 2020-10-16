@@ -7,7 +7,7 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import HomeScreen from '../screens/home/HomeScreen';
-import LoginScreen from '../components/LoginScreen';
+import LoginScreen from '../screens/LoginScreen';
 import { BottomTabParamList, HomeParamList, TabTwoParamList, LoginParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -26,6 +26,7 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
+      
       <BottomTab.Screen
         name="Login"
         component={LoginNavigator}
@@ -33,6 +34,8 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
+
+  {/*
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoNavigator}
@@ -40,6 +43,8 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
+      */}
+
     </BottomTab.Navigator>
   );
 }
@@ -70,9 +75,9 @@ function LoginNavigator() {
   return (
     <LoginStack.Navigator>
       <LoginStack.Screen
-        name="LoginScreen"
+        name="Login"
         component={LoginScreen}
-        options={{ headerTitle: 'Login' }}
+        options={{ headerTitle: 'Account Login' }}
       />
     </LoginStack.Navigator>
   );
