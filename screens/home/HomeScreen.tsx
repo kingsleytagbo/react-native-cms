@@ -8,14 +8,19 @@ import { getToken, setToken } from '../../services/Token';
 
 const HomeScreen = ({ navigation }:any ) => {
   const [authenticated, setAuthenticated] = useState(false);
+  const refreshAuthentication = async () => {
+    //const [authenticated, setAuthenticated] = useState(false);
+    return () => setAuthenticated(value => !!value); // update the state to force render
+}
+refreshAuthentication();
 
   const logout = async () => {
     await setToken(null);
-    navigation.navigate('Login')
+    navigation.navigate('Login');
   };
 
   const login = async () => {
-    navigation.navigate('Login')
+    navigation.navigate('Login');
   };
 
   const getAuthentication = async () => {
@@ -32,7 +37,7 @@ const HomeScreen = ({ navigation }:any ) => {
 
   return (
     <View style={styles.container}>
-      <Text>Welcome</Text>
+      <Text>{authenticated ? 'Welcome, you are logged in' : 'You are not logged in'}</Text>
       {authenticated !== null && (
         <Button
           onPress={() => authenticated ? logout() : login()}
