@@ -77,7 +77,7 @@ function LoginNavigator() {
       <LoginStack.Screen
         name="Login"
         component={LoginScreen}
-        options={{ headerTitle: 'React Native - AccountLogin' }}
+        options={{ headerTitle: 'React Native - Account Login' }}
       />
     </LoginStack.Navigator>
   );
