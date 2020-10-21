@@ -34,7 +34,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
             style={styles.textInput}
             onChangeText={(text: any) => onChangeEmail(text)}
             value={email}
-            placeholder="Enter Your Username:"
+            placeholder="Enter your Username ..."
             keyboardType="email-address"
           />
         </View>
@@ -44,7 +44,7 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
             style={styles.textInput}
             onChangeText={(text: any) => onChangePassword(text)}
             value={password}
-            placeholder="Enter Your Password:"
+            placeholder="Enter your Password ..."
             secureTextEntry
           />
         </View>
