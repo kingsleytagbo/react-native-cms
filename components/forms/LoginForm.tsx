@@ -97,7 +97,7 @@ const LoginForm = ({ buttonText, children, onSubmit, onSuccess, onFailure }:Logi
         </View>
 
         <Button 
-         style={{ color: 'White', backgroundColor: 'White' }}
+         style={{ color: 'White', backgroundColor: 'White', }}
          title={buttonText} onPress={submit} />
         {errorMessage ? <Text>{errorMessage}</Text> : null}
         {children}

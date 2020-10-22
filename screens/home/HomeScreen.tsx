@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
-import LoginScreen from '../../screens/LoginScreen';
 import { Button, Text, View } from '../../components/Themed';
 import { getToken, setToken } from '../../services/Token';
 
