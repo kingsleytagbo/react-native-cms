@@ -7,6 +7,8 @@ Build Native (IOS + Android) Mobile Apps in React Native
 ## Setup
 echo init ReactNativeBlog
 npm start 
+react-native link react-native-ionicons
+
 
 ## Git
 git pull --allow-unrelated-histories https://github.com/kingsleytagbo/react-native-cms

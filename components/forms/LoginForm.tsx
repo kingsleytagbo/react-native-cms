@@ -1,3 +1,11 @@
+/**
+ * React Native - Login Form Component
+ * Author:  Kingsley Tagbo
+ * Github:  https://github.com/kingsleytagbo
+ * Twitter: https://twitter.com/kingsleytagbo
+ * Website: http://www.launchfeatures.com
+ * Gists:   https://gist.github.com/kingsleytagbo
+ */
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, TextInput, TextStyle } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -5,7 +13,8 @@ import { View, Text, Button } from '../../components/Themed';
 import Colors from '../../constants/Colors';
 import { setToken } from '../../services/Token';
 
-const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any) => {
+
+const LoginForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any) => {
     const [email, onChangeEmail] = useState('');
     const [password, onChangePassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -98,4 +107,4 @@ const SignupForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any
 
   });
   
-  export default SignupForm;
+  export default LoginForm;
