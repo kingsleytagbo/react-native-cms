@@ -42,20 +42,35 @@ const LoginForm = ({ buttonText, children, onSubmit, onSuccess, onFailure }:Logi
     const [password, onChangePassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
+    /** 
+     * Called by the Login Button on a Press / Click. Calls the onSubmit function (parameter) 
+    */
     const submit = () => {
       onSubmit(email, password)
         .then(async (result:any) => {
-          // console.log({result: result, authenticated: result.authenticated, auth_token : result.auth_token});
+          /**
+           * On Success of Login authentication, save the authentication / login token
+           * Calls the onSuccess function (parameter)
+           */
           if (result.authenticated == true) {
             await setToken(result.auth_token);
             onSuccess();
           }
           else{
+            /**
+             * On Failure of Login authentication, clear the authentication token 
+             * Calls the onFailure function (parameter)
+             */
             await setToken(null);
             onFailure();
           }
         })
-        .catch((res:any) => setErrorMessage(res.error));
+        .catch((res: any) => {
+          /**
+            * On Failure of Login Api call, display an error message
+          */
+          setErrorMessage(res.error);
+        })
     };
   
     return (
