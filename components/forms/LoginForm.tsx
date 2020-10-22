@@ -1,3 +1,4 @@
+//#region "Comments"
 /**
  * React Native - Login Form Component
  * Author:  Kingsley Tagbo
@@ -18,6 +19,8 @@
  * References:
  *  Using the State Hook: https://reactjs.org/docs/hooks-state.html
  */
+//#endregion "Comments"
+
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, TextInput, TextStyle } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
