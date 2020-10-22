@@ -27,10 +27,13 @@ import Login from '../../models/Login';
 import { setToken } from '../../services/Token';
 
 /**
- * 
- * @param param0 
+ * LoginForm Function Component
+ * @param buttonText: text displayed on the Login Button
+ * @param onSubmit:   function called when the Login Button is pressed / clicked
+ * @param onSuccess:  function called when the Login Api call succeeds
+ * @param onFailure:  function called when the Login Api call fails    
  */
-const LoginForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:Login) => {
+const LoginForm = ({ buttonText, children, onSubmit, onSuccess, onFailure }:Login) => {
     /**
      * Declare state variables (email, password, errorMessage), with initial empty values ('')
      * and the function that updates them using “array destructuring”
