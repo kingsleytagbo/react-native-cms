@@ -5,16 +5,36 @@
  * Twitter: https://twitter.com/kingsleytagbo
  * Website: http://www.launchfeatures.com
  * Gists:   https://gist.github.com/kingsleytagbo
+ * Description:
+ * LoginForm is a ReactNative function component 
+ *  Includes React Native ScrollView, StyleSheet, TextInput, TextStyle, View, Text & Button
+ * useState:
+ *  Hooks are a new addition in React 16.8. They let you use state and other React features 
+ *  without writing a class. Hooks don’t work inside classes. But you can use them instead 
+ *  of writing classes. A Hook is a special function that lets you “hook into” React features. 
+ *  For example, useState is a Hook that lets you add React state to function components. 
+ *  Normally, variables “disappear” when a function exits but state variables are preserved 
+ *  between re-renders,.
+ * References:
+ *  Using the State Hook: https://reactjs.org/docs/hooks-state.html
  */
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, TextInput, TextStyle } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { View, Text, Button } from '../../components/Themed';
 import Colors from '../../constants/Colors';
+import Login from '../../models/Login';
 import { setToken } from '../../services/Token';
 
-
-const LoginForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:any) => {
+/**
+ * 
+ * @param param0 
+ */
+const LoginForm = ({ buttonText, onSubmit, children, onSuccess, onFailure }:Login) => {
+    /**
+     * Declare state variables (email, password, errorMessage), with initial empty values ('')
+     * and the function that updates them using “array destructuring”
+    */
     const [email, onChangeEmail] = useState('');
     const [password, onChangePassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
