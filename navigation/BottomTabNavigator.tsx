@@ -6,9 +6,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import UsersScreen from '../screens/UsersScreen';
 import HomeScreen from '../screens/home/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
+import UsersScreen from '../screens/users/UsersScreen';
+import AddUserScreen from '../screens/users/AddUserScreen';
 import { BottomTabParamList, HomeParamList, UsersAdminParamList, LoginParamList } from '../types';
 import { getToken, setToken } from '../services/Token';
 
@@ -147,6 +148,10 @@ function UsersAdminNavigator() {
         component={UsersScreen}
         options={{ headerTitle: 'Users Administration' }}
       />
+        <UsersAdminStack.Screen
+            name="AddUser"
+            component={AddUserScreen}
+          />
     </UsersAdminStack.Navigator>
   );
 }

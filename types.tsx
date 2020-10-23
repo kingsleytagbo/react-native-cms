@@ -1,6 +1,5 @@
 export type RootStackParamList = {
   Root: undefined;
-  Login: undefined;
   NotFound: undefined;
 };
 
@@ -23,6 +22,7 @@ export type LoginParamList = {
 };
 export type UsersAdminParamList = {
   Users: undefined;
+  AddUser: undefined;
 };
 
 export type CreateAccountParamList = {

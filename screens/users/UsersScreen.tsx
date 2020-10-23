@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Text, View } from '../components/Themed';
-import { createAccount } from '../services/Api';
+import { Button, Text, View } from '../../components/Themed';
+import { createAccount } from '../../services/Api';
 
 type Props = {
     navigation: any;
@@ -11,7 +11,12 @@ const UsersAdmin = ({ navigation }: Props) => {
     createAccount('test@test.ca', 'password')
       .then((val) => {
           console.log({"CreateAccount Success" : val});
-        navigation.navigate('Home');
+          navigation.navigate('Root', {
+            screen: 'Users',
+            params: {
+              screen: 'AddUser',
+            },
+          });
       })
       .catch((err) => console.log('error:', err.message));
   };
@@ -19,8 +24,7 @@ const UsersAdmin = ({ navigation }: Props) => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>User Administration</Text>
-      <Button title="Create user" onPress={createUser} />
-      <Button title="Log in" onPress={() => navigation.navigate('Login')} />
+      <Button title="Add User" onPress={createUser} />
     </View>
   );
 };
