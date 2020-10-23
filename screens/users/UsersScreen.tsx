@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Dimensions, FlatList } from 'react-native';
-import { Button, Text, View } from '../../components/Themed';
+import { Dimensions, FlatList, StyleSheet, TouchableHighlight, Text, View } from 'react-native';
+import { Button,  } from '../../components/Themed';
 import User from '../../models/User';
 import { createAccount, getUsersInStorage } from '../../services/Api';
 
@@ -32,6 +32,9 @@ const UsersAdmin = ({ navigation }: Props) => {
     setUsers(users);
     console.log({users2: users});
   };
+  const editUser = async (user: User) => {
+    console.log({editUser: user});
+  }
 
   useEffect(() => {
     console.log({"useEffect": getUsers})
@@ -46,11 +49,14 @@ const UsersAdmin = ({ navigation }: Props) => {
         style={{ marginTop: 20 }}
         data={users}
         renderItem={({ item }) => (
-          <View style={{ justifyContent: 'center', marginBottom: 10, marginLeft:20, marginRight:20 }}>
-            <Text style={{ backgroundColor: 'lightgray', color: 'white', padding: 20, width: Dimensions.get('window').width }}>
-              {item.username}
-            </Text>
-          </View>
+          <TouchableHighlight onPress={() => { editUser(item); }}
+            underlayColor={'#f1f1f1'}>
+            <View style={styles.item}>
+              <Text style={{ backgroundColor: 'gray', color: 'white', padding: 20, width: Dimensions.get('window').width }}>
+                {item.username}
+              </Text>
+            </View>
+          </TouchableHighlight>
         )}
       />
     </View>
@@ -58,3 +64,19 @@ const UsersAdmin = ({ navigation }: Props) => {
 };
 
 export default UsersAdmin;
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  item: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: 'grey',
+    alignItems: 'center',
+},
+
+});
