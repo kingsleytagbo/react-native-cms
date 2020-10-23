@@ -75,7 +75,7 @@ const CreateAccount = ({ navigation }: Props) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
 
-      <View style={styles.label}><label>UserName:</label>
+      <View style={styles.label}><label>User Name:</label>
         <TextInput
           style={styles.textInput}
           onChangeText={(text: any) => onChangeEmail(text)}

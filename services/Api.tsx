@@ -13,9 +13,7 @@ export const getUsersInStorage = async () => {
   } catch (error) {
     console.log({error_getUsersInStorage: error});
   }
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(result), 2000);
-  });
+  return result;
 };
 
 export const saveUsersInStorage = async (value: Array<User>) => {
