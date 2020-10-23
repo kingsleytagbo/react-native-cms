@@ -62,7 +62,12 @@ const CreateAccount = ({ navigation }: Props) => {
     createAccount(user)
       .then((val) => {
         console.log({ "CreateAccount Success": val });
-        navigation.navigate('users');
+        navigation.navigate('Root', {
+          screen: 'Users',
+          params: {
+            screen: 'Users',
+          },
+        });
       })
       .catch((err) => console.log('error:', err.message));
   };
