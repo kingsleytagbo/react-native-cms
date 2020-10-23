@@ -10,6 +10,8 @@ Build Native (IOS + Android) Mobile Apps in React Native
 2. Using the State Hook: https://reactjs.org/docs/hooks-state.html
 3. 3 Ways to Add Image Icon Inside Navigation Bar in React Native:   https://aboutreact.com/react-native-image-icon-inside-navigation-bar/
 4. Nesting React Navigation: https://reactnavigation.org/docs/nesting-navigators/#navigating-to-a-screen-in-a-nested-navigator
+5. How to edit items in a React Native Flat List:
+https://love-coding.pl/en/react-native-editable-list-how-to-edit-item-data-in-a-list/
 
 ## Setup
 echo init ReactNativeBlog

@@ -58,8 +58,8 @@ const CreateAccount = ({ navigation }: Props) => {
 
   const createUser = () => {
     const user = new User(email, password);
-    console.log({ "CreateAccount Success": user });
-    createAccount(user)
+    console.log({ "AddUser Success": user });
+    createAccount(user, false)
       .then((val) => {
         console.log({ "CreateAccount Success": val });
         navigation.navigate('Root', {

@@ -4,22 +4,24 @@ const API_URL = 'https://nodejsappapi.herokuapp.com';
 
 
 export const getUsersInStorage = async () => {
-  const result = Array<User>();
+  let result = Array<User>();
   try {
     const value = await AsyncStorage.getItem('@users');
     if (value) {
-      result.concat(JSON.parse(value));
+      result = result.concat(JSON.parse(value));
     }
+    console.log({getUsersInStorage: {result: result, value:value}});
   } catch (error) {
     console.log({error_getUsersInStorage: error});
   }
-  console.log(result);
   return result;
 };
 
 export const saveUsersInStorage = async (value: Array<User>) => {
   try {
-    await AsyncStorage.setItem('@auth_token', JSON.stringify(value));
+    const result = JSON.stringify(value);
+    console.log({saveUsersInStorage: {result: result, value: value}});
+    await AsyncStorage.setItem('@users', JSON.stringify(value));
   } catch (error) {
     console.log({error_saveUsersInStorage: error});
   }
@@ -59,11 +61,15 @@ const mockSuccess = (value:any) => {
     }
   };
 
-  export const createAccount = (user: User, useApi:boolean = true) => {
+  export const createAccount = async (user: User, useApi:boolean = true) => {
     console.log({user: user});
   
     if (!useApi) {
-      return mockFailure({ error: 500, message: 'Something went wrong!' });
+      const users = await getUsersInStorage();
+      users.push(user);
+      let result = await saveUsersInStorage(users);
+      return result;
+      //return mockFailure({ error: 500, message: 'Something went wrong!' });
     }
   
     return mockSuccess({ auth_token: 'successful_fake_token' });
