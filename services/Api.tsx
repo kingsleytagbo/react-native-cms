@@ -35,7 +35,7 @@ const mockSuccess = (value:any) => {
   };
 
   export const createAccount = (email:string, password:string, shouldSucceed = true) => {
-    console.log(email, password);
+    console.log({email:email, password:password});
   
     if (!shouldSucceed) {
       return mockFailure({ error: 500, message: 'Something went wrong!' });

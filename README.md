@@ -9,7 +9,7 @@ Build Native (IOS + Android) Mobile Apps in React Native
 1. React Native Authentication: https://scottdomes.com/react-native-authentication/
 2. Using the State Hook: https://reactjs.org/docs/hooks-state.html
 3. 3 Ways to Add Image Icon Inside Navigation Bar in React Native:   https://aboutreact.com/react-native-image-icon-inside-navigation-bar/
-4. 
+4. Nesting React Navigation: https://reactnavigation.org/docs/nesting-navigators/#navigating-to-a-screen-in-a-nested-navigator
 
 ## Setup
 echo init ReactNativeBlog
