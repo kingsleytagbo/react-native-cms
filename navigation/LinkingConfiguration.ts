@@ -1,5 +1,7 @@
 import * as Linking from 'expo-linking';
-
+/**
+ * add routes here to shorten them, e..g. /users/users is shortened to /users
+ */
 export default {
   prefixes: [Linking.makeUrl('/')],
   config: {
@@ -14,6 +16,11 @@ export default {
           Login: {
             screens: {
              Login: 'login',
+            },
+          },
+          Users: {
+            screens: {
+             Users: 'users',
             },
           },
           TabTwo: {

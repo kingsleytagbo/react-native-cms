@@ -7,6 +7,7 @@ export type RootStackParamList = {
 export type BottomTabParamList = {
   Home: undefined;
   Login: undefined;
+  Users: undefined;
 };
 
 export type HomeParamList = {
@@ -19,6 +20,9 @@ export type TabTwoParamList = {
 
 export type LoginParamList = {
   Login: undefined;
+};
+export type UsersAdminParamList = {
+  Users: undefined;
 };
 
 export type CreateAccountParamList = {

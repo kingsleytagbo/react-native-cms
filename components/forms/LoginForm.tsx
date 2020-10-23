@@ -1,6 +1,6 @@
 //#region "Comments"
 /**
- * React Native - Login Form Component
+ * React Native - Login Form Function Component
  * Author:  Kingsley Tagbo
  * Github:  https://github.com/kingsleytagbo
  * Twitter: https://twitter.com/kingsleytagbo

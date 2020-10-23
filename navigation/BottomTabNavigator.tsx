@@ -1,15 +1,16 @@
+import React, { useState, useEffect } from 'react';
 import { Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import UsersScreen from '../screens/UsersScreen';
 import HomeScreen from '../screens/home/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
-import { BottomTabParamList, HomeParamList, TabTwoParamList, LoginParamList } from '../types';
+import { BottomTabParamList, HomeParamList, UsersAdminParamList, LoginParamList } from '../types';
+import { getToken, setToken } from '../services/Token';
 
 function LogoTitle(props:any) {
   return (
@@ -38,6 +39,18 @@ const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
   const colorScheme = useColorScheme();
+  const [authenticated, setAuthenticated] = useState(false);
+  const getAuthentication = async () => {
+    const token = await getToken() || 'null';
+    if(token && (token != 'null') && (token != 'undefined') && (token.length > 10)){
+      setAuthenticated(true);
+    }
+    console.log({'BottomTabNavigator': {token: token, authenticated: authenticated}});
+  };
+
+  useEffect(() => {
+    getAuthentication();
+  });
 
   return (
     <BottomTab.Navigator
@@ -59,15 +72,15 @@ export default function BottomTabNavigator() {
         }}
       />
 
-  {/*
-      <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
-        }}
-      />
-      */}
+      {((authenticated !== null) && (authenticated === true)) && (
+        <BottomTab.Screen
+          name="Users"
+          component={UsersAdminNavigator}
+          options={{
+            tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          }}
+        />
+      )}
 
     </BottomTab.Navigator>
   );
@@ -125,15 +138,15 @@ function LoginNavigator() {
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
-function TabTwoNavigator() {
+const UsersAdminStack = createStackNavigator<UsersAdminParamList>();
+function UsersAdminNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <UsersAdminStack.Navigator>
+      <UsersAdminStack.Screen
+        name="Users"
+        component={UsersScreen}
+        options={{ headerTitle: 'Users Administration' }}
       />
-    </TabTwoStack.Navigator>
+    </UsersAdminStack.Navigator>
   );
 }
