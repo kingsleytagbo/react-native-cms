@@ -14,13 +14,11 @@ const UsersAdmin = ({ navigation }: Props) => {
   const getUsers = async () => {
     let users = await getUsersInStorage() || Array<User>();
     users = [];
-    setUsers(users);
+    // setUsers(users);
     console.log({user: users});
   };
 
-  useEffect(() => {
-    //getUsers();
-  });
+  getUsers();
 
   const createUser = () => {
     createAccount(new User('test@test.ca', 'password'))
@@ -40,21 +38,9 @@ const UsersAdmin = ({ navigation }: Props) => {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>User Administration</Text>
       <Button title="Add User" onPress={createUser} />
-      <FlatList
-        data={users}
-        renderItem={({item}) => (
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'column',
-              margin: 1
-            }}>
-          </View>
-        )}
-        //Setting the number of column
-        numColumns={3}
-        keyExtractor={(item: Partial<User>) => item.username!}
-      />
+      {users.map((user) => (
+          <Text key={user.username}>{user.username}</Text>
+        ))}
     </View>
   );
 };

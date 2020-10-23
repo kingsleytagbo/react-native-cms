@@ -13,6 +13,7 @@ export const getUsersInStorage = async () => {
   } catch (error) {
     console.log({error_getUsersInStorage: error});
   }
+  console.log(result);
   return result;
 };
 
