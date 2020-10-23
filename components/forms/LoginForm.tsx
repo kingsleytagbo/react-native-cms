@@ -131,7 +131,7 @@ const LoginForm = ({ buttonText, children, onSubmit, onSuccess, onFailure }:Logi
     input: {
       height: '2em',
       width: 300,
-      fontSize: '1em',
+      fontSize: 12,
       borderColor: Colors.light.tint,
       borderWidth: 1,
       marginTop: 2,
@@ -144,7 +144,7 @@ const LoginForm = ({ buttonText, children, onSubmit, onSuccess, onFailure }:Logi
       placeholderTextColor:'gray'
     },
     textInput: TextInputStyle,
-    label: { height: '2em', fontSize: '1em', marginBottom: '2em', color: '#191970', fontWeight:'normal'}
+    label: { height: '2em', fontSize: '12', marginBottom: '2em', color: '#191970', fontWeight:'normal'}
 
   });
   

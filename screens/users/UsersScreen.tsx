@@ -34,6 +34,12 @@ const UsersAdmin = ({ navigation }: Props) => {
   };
   const editUser = async (user: User) => {
     console.log({editUser: user});
+    navigation.navigate('Root', {
+      screen: 'Users',
+      params: {
+        screen: 'EditUser',
+        params:{user: user},
+      }});
   }
 
   useEffect(() => {

@@ -23,6 +23,7 @@ export type LoginParamList = {
 export type UsersAdminParamList = {
   Users: undefined;
   AddUser: undefined;
+  EditUser: undefined;
 };
 
 export type CreateAccountParamList = {

@@ -10,6 +10,7 @@ import HomeScreen from '../screens/home/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import UsersScreen from '../screens/users/UsersScreen';
 import AddUserScreen from '../screens/users/AddUserScreen';
+import EditUserScreen from '../screens/users/EditUserScreen';
 import { BottomTabParamList, HomeParamList, UsersAdminParamList, LoginParamList } from '../types';
 import { getToken, setToken } from '../services/Token';
 
@@ -151,6 +152,10 @@ function UsersAdminNavigator() {
         <UsersAdminStack.Screen
             name="AddUser"
             component={AddUserScreen}
+          />
+      <UsersAdminStack.Screen
+            name="EditUser"
+            component={EditUserScreen}
           />
     </UsersAdminStack.Navigator>
   );

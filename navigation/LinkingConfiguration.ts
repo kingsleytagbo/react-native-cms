@@ -21,12 +21,8 @@ export default {
           Users: {
             screens: {
              Users: 'users',
-             AddUser: 'users/adduser'
-            },
-          },
-          TabTwo: {
-            screens: {
-              TabTwoScreen: 'two',
+             AddUser: 'users/adduser',
+             EditUser: 'users/edituser',
             },
           },
         },

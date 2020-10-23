@@ -11,45 +11,6 @@ type Props = {
     navigation: any;
 };
 
-const TextInputStyle:TextStyle = {
-  height: '2em',
-  width: 300,
-  fontSize: 14,
-  borderColor: Colors.light.tint,
-  borderWidth: 1,
-  marginTop: 2,
-  marginBottom: '1em',
-  paddingStart: '0.5em',
-  paddingBottom: '0.5em',
-  paddingTop: '0.5em',
-  color: 'Colors.light.tint'
-};
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    height: '2em',
-    width: 300,
-    fontSize: '1em',
-    borderColor: Colors.light.tint,
-    borderWidth: 1,
-    marginTop: 2,
-    marginBottom: '1em',
-    paddingStart: '0.5em',
-    paddingBottom: '0.5em',
-    paddingTop: '0.5em',
-    color: Colors.light.tint,
-    selectionColor:"#FFFFFF",
-    placeholderTextColor:'gray'
-  },
-  textInput: TextInputStyle,
-  label: { height: '2em', fontSize: '1em', marginBottom: '2em', color: '#191970', fontWeight:'normal'}
-
-});
-
 const CreateAccount = ({ navigation }: Props) => {
   const [email, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');
@@ -104,3 +65,42 @@ const CreateAccount = ({ navigation }: Props) => {
 };
 
 export default CreateAccount;
+
+const TextInputStyle:TextStyle = {
+  height: '2em',
+  width: 300,
+  fontSize: 14,
+  borderColor: Colors.light.tint,
+  borderWidth: 1,
+  marginTop: 2,
+  marginBottom: '1em',
+  paddingStart: '0.5em',
+  paddingBottom: '0.5em',
+  paddingTop: '0.5em',
+  color: 'Colors.light.tint'
+};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  input: {
+    height: '2em',
+    width: 300,
+    fontSize: 12,
+    borderColor: Colors.light.tint,
+    borderWidth: 1,
+    marginTop: 2,
+    marginBottom: '1em',
+    paddingStart: '0.5em',
+    paddingBottom: '0.5em',
+    paddingTop: '0.5em',
+    color: Colors.light.tint,
+    selectionColor:"#FFFFFF",
+    placeholderTextColor:'gray'
+  },
+  textInput: TextInputStyle,
+  label: { height: '2em', fontSize: '12', marginBottom: '2em', color: '#191970', fontWeight:'normal'}
+
+});
