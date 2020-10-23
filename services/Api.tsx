@@ -1,4 +1,30 @@
+import AsyncStorage from '@react-native-community/async-storage';
+import User from '../models/User';
 const API_URL = 'https://nodejsappapi.herokuapp.com';
+
+
+export const getUsersInStorage = async () => {
+  const result = Array<User>();
+  try {
+    const value = await AsyncStorage.getItem('@users');
+    if (value) {
+      result.concat(JSON.parse(value));
+    }
+  } catch (error) {
+    console.log({error_getUsersInStorage: error});
+  }
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(result), 2000);
+  });
+};
+
+export const saveUsersInStorage = async (value: Array<User>) => {
+  try {
+    await AsyncStorage.setItem('@auth_token', JSON.stringify(value));
+  } catch (error) {
+    console.log({error_saveUsersInStorage: error});
+  }
+};
 
 const mockSuccess = (value:any) => {
     return new Promise((resolve) => {
@@ -34,10 +60,10 @@ const mockSuccess = (value:any) => {
     }
   };
 
-  export const createAccount = (email:string, password:string, shouldSucceed = true) => {
-    console.log({email:email, password:password});
+  export const createAccount = (user: User, useApi:boolean = true) => {
+    console.log({user: user});
   
-    if (!shouldSucceed) {
+    if (!useApi) {
       return mockFailure({ error: 500, message: 'Something went wrong!' });
     }
   

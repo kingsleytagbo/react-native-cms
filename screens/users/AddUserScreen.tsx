@@ -5,6 +5,7 @@ import { Button, Text, View } from '../../components/Themed';
 import Colors from '../../constants/Colors';
 import { createAccount } from '../../services/Api';
 import Login from '../../models/Login';
+import User from '../../models/User';
 
 type Props = {
     navigation: any;
@@ -56,10 +57,12 @@ const CreateAccount = ({ navigation }: Props) => {
   const buttonText = 'Create User';
 
   const createUser = () => {
-    createAccount(email, password)
+    const user = new User(email, password);
+    console.log({ "CreateAccount Success": user });
+    createAccount(user)
       .then((val) => {
-          console.log({"CreateAccount Success" : val});
-        navigation.navigate('Home');
+        console.log({ "CreateAccount Success": val });
+        navigation.navigate('users');
       })
       .catch((err) => console.log('error:', err.message));
   };
