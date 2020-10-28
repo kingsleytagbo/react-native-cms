@@ -13,17 +13,13 @@ const UsersAdmin = ({ navigation }: Props) => {
   const [users, setUsers] = useState(Array<User>());
 
   const createUser = () => {
-    createAccount(new User('test@test.ca', 'password'))
-      .then((val) => {
-          console.log({"CreateAccount Success" : val});
-          navigation.navigate('Root', {
-            screen: 'Users',
-            params: {
-              screen: 'AddUser',
-            },
-          });
-      })
-      .catch((err) => console.log('error:', err.message));
+    console.log({createUser: {}});
+    navigation.navigate('Root', {
+      screen: 'Users',
+      params: {
+        screen: 'AddUser',
+        params:{user: {}},
+      }});
   };
 
   const getUsers = async () => {

@@ -27,18 +27,6 @@ export const saveUsersInStorage = async (value: Array<User>) => {
   }
 };
 
-const mockSuccess = (value:any) => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(value), 2000);
-    });
-  };
-  
-  const mockFailure = (value:any) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => reject(value), 2000);
-    });
-  };
-
   export const login = (email:string, password:string, useApi:boolean = true) => {
     // console.log({'Login': {email: email, password:password, useApi: useApi}});
     if (useApi) {
@@ -61,6 +49,31 @@ const mockSuccess = (value:any) => {
     }
   };
 
+
+  export const createUser = (email:string, password:string, useApi:boolean = true) => {
+    // console.log({'Login': {email: email, password:password, useApi: useApi}});
+    if (useApi) {
+      if ((email && email !== '') && (password && password !== '')) {
+        const body = {
+          "user": {
+            user_login:email, user_pass:password, user_nicename:password,user_email:email,display_name:email,
+              user_status:1,user_registered:1,user_url:'',user_activation_key:'',spam:0,
+              deleted:0,site_id:1
+          }
+        };
+        return post('/users/createUser', body);
+        //return mockSuccess({ auth_token: 'Login Api - Success!' });
+      }
+      else {
+        return mockFailure({ error: 500, message: 'Login Api - Failure' });
+      }
+    }
+    else{
+      return mockFailure({ error: 500, message: 'Login - Failure' });
+    }
+  };
+
+
   export const createAccount = async (user: User, useApi:boolean = true) => {
     console.log({user: user});
   
@@ -70,6 +83,9 @@ const mockSuccess = (value:any) => {
       let result = await saveUsersInStorage(users);
       return result;
       //return mockFailure({ error: 500, message: 'Something went wrong!' });
+    }
+    else{
+      return createUser(user.username, user.password, true);
     }
   
     return mockSuccess({ auth_token: 'successful_fake_token' });
@@ -118,4 +134,18 @@ export const post = async (destination:string, body:any) => {
     return response;
   }
   throw { error: result.status };
+};
+
+
+
+const mockSuccess = (value:any) => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(value), 2000);
+  });
+};
+
+const mockFailure = (value:any) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => reject(value), 2000);
+  });
 };
