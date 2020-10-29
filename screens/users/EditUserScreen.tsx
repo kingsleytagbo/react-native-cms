@@ -53,7 +53,7 @@ const EditUser = ({ route, navigation }: Props) => {
           onChangeText={(value) => {
             onChangeEmail(value)
           }}
-          value={user ? user.user_nicename : ''}
+          value={email}
           placeholder="Enter your Username ..."
           keyboardType="email-address"
         />
