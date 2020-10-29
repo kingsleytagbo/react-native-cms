@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, TextInput, TextStyle } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Button, Text, View } from '../../components/Themed';
 import Colors from '../../constants/Colors';
-import { createAccount } from '../../services/Api';
+import { updateUser } from '../../services/Api';
 import Login from '../../models/Login';
 import User from '../../models/User';
 
@@ -14,18 +14,18 @@ type Props = {
 
 const EditUser = ({ route, navigation }: Props) => {
   const user:User = {... route.params.user};
-  console.log({navigation: navigation, route: route, user: user});
   const [email, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const buttonText = 'Save User';
 
   const saveUser = () => {
-    const user = new User(email, password);
-    console.log({ "AddUser Success": user });
-    createAccount(user, false)
+    const editedUser = Object.assign(user, new User(email, password));
+    console.log({ "EditUser Begins": editedUser, user: user, password: password });
+    return;
+    updateUser(user, false)
       .then((val) => {
-        console.log({ "CreateAccount Success": val });
+        console.log({ "EditUser Success": val });
         navigation.navigate('Root', {
           screen: 'Users',
           params: {
@@ -37,11 +37,9 @@ const EditUser = ({ route, navigation }: Props) => {
   };
 
   useEffect(() => {
-    //console.log({"useEffect": user.username});
-    onChangeEmail(user.user_nicename);
-    onChangePassword(user.user_pass);
+    onChangeEmail(route.params.user.user_nicename);
+    onChangePassword(route.params.user.user_pass);
   }, []);
-
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -49,8 +47,10 @@ const EditUser = ({ route, navigation }: Props) => {
       <View style={styles.label}><label>User Name:</label>
         <TextInput
           style={styles.textInput}
-          onChangeText={(text: any) => onChangeEmail(text)}
-          value={user.user_nicename}
+          onChangeText={(value) => {
+            onChangeEmail(value)
+          }}
+          value={user ? user.user_nicename : ''}
           placeholder="Enter your Username ..."
           keyboardType="email-address"
         />
@@ -59,8 +59,10 @@ const EditUser = ({ route, navigation }: Props) => {
       <View style={styles.label}><label>Password:</label>
         <TextInput
           style={styles.textInput}
-          onChangeText={(text: any) => onChangePassword(text)}
-          value={user.user_pass}
+          onChangeText={(value) => {
+            onChangePassword(value)
+          }}
+          value={password}
           placeholder="Enter your Password ..."
           secureTextEntry
         />

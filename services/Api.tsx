@@ -60,7 +60,7 @@ export const getUsers = (useApi: boolean = true) => {
   }
 };
 
-  export const createUser = (email:string, password:string, useApi:boolean = true) => {
+export const createUser = (email:string, password:string, useApi:boolean = true) => {
     // console.log({'Login': {email: email, password:password, useApi: useApi}});
     if (useApi) {
       if ((email && email !== '') && (password && password !== '')) {
@@ -82,6 +82,21 @@ export const getUsers = (useApi: boolean = true) => {
       return mockFailure({ error: 500, message: 'Login - Failure' });
     }
   };
+
+export const updateUser = (user: User, useApi: boolean = true) => {
+  console.log({'updateUser': user});
+  if (useApi) {
+    const body = {
+      "user": {
+        user
+      }
+    };
+    return post('/users/createUser', body);
+  }
+  else {
+    return mockFailure({ error: 500, message: 'updateUser - Failure' });
+  }
+};
 
 
   export const createAccount = async (user: User, useApi:boolean = true) => {
