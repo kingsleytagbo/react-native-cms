@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Dimensions, FlatList, StyleSheet, TouchableHighlight, Text, View } from 'react-native';
 import { Button,  } from '../../components/Themed';
 import User from '../../models/User';
-import { createAccount, getUsersInStorage } from '../../services/Api';
+import { createAccount, getUsers } from '../../services/Api';
 
 type Props = {
     navigation: any;
@@ -22,25 +22,25 @@ const UsersAdmin = ({ navigation }: Props) => {
       }});
   };
 
-  const getUsers = async () => {
-    let users = await getUsersInStorage() || Array<User>();
-    //users = [];
+  const loadUsers = async () => {
+    let users = await getUsers() || Array<User>();
     setUsers(users);
-    console.log({users2: users});
+    console.log({ users });
   };
   const editUser = async (user: User) => {
-    console.log({editUser: user});
+    console.log({ editUser: user });
     navigation.navigate('Root', {
       screen: 'Users',
       params: {
         screen: 'EditUser',
-        params:{user: user},
-      }});
+        params: { user: user },
+      }
+    });
   }
 
   useEffect(() => {
-    console.log({"useEffect": getUsers})
-    getUsers();
+    console.log({ "useEffect": loadUsers })
+    loadUsers();
   }, []);
 
   return (
@@ -55,7 +55,7 @@ const UsersAdmin = ({ navigation }: Props) => {
             underlayColor={'#f1f1f1'}>
             <View style={styles.item}>
               <Text style={{ backgroundColor: 'gray', color: 'white', padding: 20, width: Dimensions.get('window').width }}>
-                {item.username}
+                {item.user_login}
               </Text>
             </View>
           </TouchableHighlight>

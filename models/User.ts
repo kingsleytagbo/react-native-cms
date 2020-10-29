@@ -1,10 +1,10 @@
 class User{
-    public readonly username:string;
-    public readonly password:string;
+    public readonly user_nicename:string;
+    public readonly user_pass:string;
 
     constructor(username: string, password:string){
-        this.username = username;
-        this.password = password;
+        this.user_nicename = username;
+        this.user_pass = password;
     }
 }
 

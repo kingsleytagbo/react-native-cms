@@ -27,28 +27,38 @@ export const saveUsersInStorage = async (value: Array<User>) => {
   }
 };
 
-  export const login = (email:string, password:string, useApi:boolean = true) => {
-    // console.log({'Login': {email: email, password:password, useApi: useApi}});
-    if (useApi) {
-      if ((email && email !== '') && (password && password !== '')) {
-        const body = {
-          "login": {
-            "username": email,
-            "password": password
-          }
-        };
-        return post('/login', body);
-        //return mockSuccess({ auth_token: 'Login Api - Success!' });
-      }
-      else {
-        return mockFailure({ error: 500, message: 'Login Api - Failure' });
-      }
+export const login = (email: string, password: string, useApi: boolean = true) => {
+  // console.log({'Login': {email: email, password:password, useApi: useApi}});
+  if (useApi) {
+    if ((email && email !== '') && (password && password !== '')) {
+      const body = {
+        "login": {
+          "username": email,
+          "password": password
+        }
+      };
+      return post('/login', body);
+      //return mockSuccess({ auth_token: 'Login Api - Success!' });
     }
-    else{
-      return mockFailure({ error: 500, message: 'Login - Failure' });
+    else {
+      return mockFailure({ error: 500, message: 'Login Api - Failure' });
     }
-  };
+  }
+  else {
+    return mockFailure({ error: 500, message: 'Login - Failure' });
+  }
+};
 
+export const getUsers = (useApi: boolean = true) => {
+  // console.log({'Login': {email: email, password:password, useApi: useApi}});
+  if (useApi) {
+    const body = {};
+    return post('/users/getUsers', body);
+  }
+  else {
+    return getUsersInStorage();
+  }
+};
 
   export const createUser = (email:string, password:string, useApi:boolean = true) => {
     // console.log({'Login': {email: email, password:password, useApi: useApi}});
@@ -75,8 +85,7 @@ export const saveUsersInStorage = async (value: Array<User>) => {
 
 
   export const createAccount = async (user: User, useApi:boolean = true) => {
-    console.log({user: user});
-  
+    // console.log({user: user});
     if (!useApi) {
       const users = await getUsersInStorage();
       users.push(user);
@@ -85,7 +94,7 @@ export const saveUsersInStorage = async (value: Array<User>) => {
       //return mockFailure({ error: 500, message: 'Something went wrong!' });
     }
     else{
-      return createUser(user.username, user.password, true);
+      return createUser(user.user_nicename, user.user_pass, true);
     }
   
     return mockSuccess({ auth_token: 'successful_fake_token' });
@@ -94,7 +103,7 @@ export const saveUsersInStorage = async (value: Array<User>) => {
 
 
 const getAuthenticationToken = () => 'successful_fake_token';
-export const getUsers = (shouldSucceed = true) => {
+export const getAuthenticatedUsers = (shouldSucceed = true) => {
   const token = getAuthenticationToken();
 
   if (!shouldSucceed) {
