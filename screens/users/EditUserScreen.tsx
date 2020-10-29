@@ -22,8 +22,7 @@ const EditUser = ({ route, navigation }: Props) => {
   const saveUser = () => {
     const editedUser = Object.assign(user, new User(email, password));
     console.log({ "EditUser Begins": editedUser, user: user, password: password });
-    return;
-    updateUser(user, false)
+    updateUser(editedUser, true)
       .then((val) => {
         console.log({ "EditUser Success": val });
         navigation.navigate('Root', {
@@ -33,7 +32,11 @@ const EditUser = ({ route, navigation }: Props) => {
           },
         });
       })
-      .catch((err) => console.log('error:', err.message));
+      .catch((err) => {
+        setErrorMessage('User could not be saved ...')
+        console.log('error:', err.message);
+      }
+    );
   };
 
   useEffect(() => {

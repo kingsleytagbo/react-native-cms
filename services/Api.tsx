@@ -84,7 +84,7 @@ export const createUser = (email:string, password:string, useApi:boolean = true)
   };
 
 export const updateUser = (user: User, useApi: boolean = true) => {
-  console.log({'updateUser': user});
+  console.log({'updateUser': user, useApi: useApi});
   if (useApi) {
     const body = {
       "user": {
