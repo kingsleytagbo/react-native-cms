@@ -91,7 +91,7 @@ export const updateUser = (user: User, useApi: boolean = true) => {
         user
       }
     };
-    return post('/users/createUser', body);
+    return post('/users/updateUser', body);
   }
   else {
     return mockFailure({ error: 500, message: 'updateUser - Failure' });
